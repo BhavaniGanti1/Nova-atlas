@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from travel_agents import app 
+from fastapi import FastAPI, Request
 from groq import Groq
 from dotenv import load_dotenv
 import os
@@ -12,15 +13,13 @@ client = Groq()
 def home():
     return {"message": "Nova Atlas Agent API is running"}
 
-@app.post("/chat")
-def chat():
-    completion = client.chat.completions.create(
-        model="meta-llama/llama-4-scout-17b-16e-instruct",
-        messages=[
-            {"role": "user", "content": "I NEED travel agent models to discuss each other based on user instructions."},
-            {"role": "assistant", "content": "Here are five travel agent models with unique skills..."},
-        ],
-        temperature=1,
-        max_tokens=1024
-    )
-    return {"response": completion.choices[0].message.content}
+@app.post("/generate")
+async def generate(request: Request):
+    body = await request.json()
+    instruction = body.get("instruction", "")
+
+    # Process instruction using Groq, or return mock output for now
+    return {
+        "travel_plan": "Here is a 3-day trip to Goa...",
+        "social_post": "🌴 Ready for the ultimate Goa experience?..."
+    }
