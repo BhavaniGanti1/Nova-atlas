@@ -30,3 +30,8 @@ tqdm==4.67.1
 typing-inspection==0.4.1
 typing_extensions==4.14.0
 uvicorn==0.34.3
+fastapi==0.110.*
+uvicorn[standard]==0.29.*
+groq==0.9.*
+python-dotenv==1.0.*
+

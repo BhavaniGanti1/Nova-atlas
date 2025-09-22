@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+      "nova-atlas-mcp": {
+        "command": "python",
+        "args": ["server.py"],
+        "env": {
+          "TELEGRAM_BOT_TOKEN": "${env:TELEGRAM_BOT_TOKEN}"
+        }
+      }
+    }
+  }
+  
